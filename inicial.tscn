@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf325enwq0jif"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_fpk73"]
+[ext_resource type="FontFile" uid="uid://jrag0scq1lyu" path="res://8-bit Arcade In.ttf" id="2_rrpke"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yemum"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 500, 1)
+gravity = Vector3(-98, 0, 0)
+scale_min = 3.0
+scale_max = 17.13
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fpk73")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -13.0
+offset_top = -10.0
+offset_right = 1175.0
+offset_bottom = 677.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 1580.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("2_rrpke")
+theme_override_font_sizes/font_size = 100
+text = "GENIUS GAME - DAVI EDITION"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(1250, 316)
+amount = 64
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_yemum")
+lifetime = 10.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 318.0
+offset_right = 682.0
+offset_bottom = 403.0
+
+[node name="Label2" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -2.0
+offset_right = 209.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("2_rrpke")
+theme_override_font_sizes/font_size = 100
+text = "PLAY
+"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
